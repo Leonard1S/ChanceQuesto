@@ -71,13 +71,13 @@ transform:rotateY(-180deg);
 pointer-events:none;
 }
 
-.page:nth-child(1){z-index:7;}
-.page:nth-child(2){z-index:6;}
-.page:nth-child(3){z-index:5;}
-.page:nth-child(4){z-index:4;}
-.page:nth-child(5){z-index:3;}
-.page:nth-child(6){z-index:2;}
-.page:nth-child(7){z-index:1;}
+/* UPDATED STACK */
+.page:nth-child(1){z-index:6;}
+.page:nth-child(2){z-index:5;}
+.page:nth-child(3){z-index:4;}
+.page:nth-child(4){z-index:3;}
+.page:nth-child(5){z-index:2;}
+.page:nth-child(6){z-index:1;}
 
 .controls{
 margin-top:20px;
@@ -106,7 +106,7 @@ color:white;
 
 <script>
 let current = 1;
-const total = 7;
+const total = 6;
 
 function next(){
 if(current < total){
@@ -144,8 +144,7 @@ pages[i].classList.add("flipped");
 <button onclick="go(3)">Permutation</button>
 <button onclick="go(4)">Combination</button>
 <button onclick="go(5)">Probability</button>
-<button onclick="go(6)">Solutions</button>
-<button onclick="go(7)">About</button>
+<button onclick="go(6)">About</button>
 </nav>
 
 <div class="main">
@@ -256,20 +255,6 @@ pages[i].classList.add("flipped");
 
 <p>Final Answer:</p>
 <p>The probability is 1/2, 0.5, or 50%.</p>
-
-<div class="controls">
-<button onclick="prev()">⬅ Back</button>
-<button onclick="next()">Next ➡</button>
-</div>
-</div>
-
-<!-- SOLUTIONS -->
-<div class="page">
-<h2>Step-by-Step Summary</h2>
-
-<p>Permutation – 24 arrangements</p>
-<p>Combination – 10 committees</p>
-<p>Probability – 1/2 or 50%</p>
 
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
