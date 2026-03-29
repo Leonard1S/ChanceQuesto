@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simple Book</title>
+<title>ChanceQuest Guidebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -14,6 +14,7 @@ flex-direction:column;
 min-height:100vh;
 }
 
+/* NAV */
 nav{
 text-align:center;
 padding:10px;
@@ -28,6 +29,7 @@ color:white;
 cursor:pointer;
 }
 
+/* MAIN */
 .main{
 flex:1;
 display:flex;
@@ -35,6 +37,7 @@ justify-content:center;
 align-items:center;
 }
 
+/* BOOK */
 .book{
 width:90%;
 max-width:800px;
@@ -42,6 +45,7 @@ height:70vh;
 position:relative;
 }
 
+/* PAGE */
 .page{
 position:absolute;
 width:100%;
@@ -55,6 +59,7 @@ transform-origin:left;
 overflow:auto;
 }
 
+/* COVER */
 .cover{
 background:#2c3e50;
 color:white;
@@ -62,19 +67,23 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+text-align:center;
 }
 
+/* FLIP */
 .flipped{
 transform:rotateY(-180deg);
 pointer-events:none;
 }
 
+/* STACK */
 .page:nth-child(1){z-index:5;}
 .page:nth-child(2){z-index:4;}
 .page:nth-child(3){z-index:3;}
 .page:nth-child(4){z-index:2;}
 .page:nth-child(5){z-index:1;}
 
+/* BUTTONS */
 .controls{
 position:absolute;
 bottom:10px;
@@ -92,6 +101,7 @@ color:white;
 cursor:pointer;
 }
 
+/* FOOTER */
 footer{
 text-align:center;
 padding:10px;
@@ -134,55 +144,110 @@ pages[i].classList.add("flipped");
 
 <body>
 
+<!-- NAV -->
 <nav>
 <button onclick="go(1)">Cover</button>
 <button onclick="go(2)">Home</button>
-<button onclick="go(3)">Design</button>
-<button onclick="go(4)">Gallery</button>
+<button onclick="go(3)">Content</button>
+<button onclick="go(4)">Examples</button>
 <button onclick="go(5)">About</button>
 </nav>
 
 <div class="main">
 <div class="book">
 
+<!-- COVER -->
 <div class="page cover">
-<h1>🌍 Roundabout Project</h1>
-<p>Culture • Math • Creativity</p>
+<h1>📘 ChanceQuest Guidebook</h1>
+<p>Permutation • Combination • Probability</p>
+
 <div class="controls">
 <button onclick="next()">Open ➡</button>
 </div>
 </div>
 
+<!-- HOME -->
 <div class="page">
-<h1>Home</h1>
-<p>Welcome to my project!</p>
+<h1>Introduction</h1>
+
+<p>
+This website is part of the ChanceQuest Digital Guidebook project. 
+It helps Grade 10 students understand permutation, combination, and probability.
+</p>
+
+<p>
+The goal is to provide a clear and engaging learning experience using real-life examples and simple explanations.
+</p>
+
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
 </div>
 </div>
 
+<!-- CONTENT -->
 <div class="page">
-<h2>Design</h2>
-<p>Explain your design here.</p>
+<h2>Educational Content</h2>
+
+<p><strong>Definitions:</strong></p>
+<ul>
+<li>Permutation – arrangement where order matters</li>
+<li>Combination – selection where order does not matter</li>
+<li>Probability – chance of an event occurring</li>
+</ul>
+
+<p><strong>Key Terms:</strong></p>
+<ul>
+<li>Factorial (n!)</li>
+<li>Sample Space</li>
+<li>Event</li>
+<li>Favorable Outcomes</li>
+<li>Experimental vs Theoretical Probability</li>
+</ul>
+
+<p><strong>Formulas:</strong></p>
+<p>nPr = n! / (n - r)!</p>
+<p>nCr = n! / [r!(n - r)!]</p>
+<p>P(E) = favorable outcomes / total outcomes</p>
+
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
 </div>
 </div>
 
+<!-- EXAMPLES -->
 <div class="page">
-<h2>Gallery</h2>
-<p>Add images here</p>
+<h2>Examples</h2>
+
+<p><strong>Permutation:</strong></p>
+<p>Arrange 3 students → 3! = 6 ways</p>
+
+<p><strong>Combination:</strong></p>
+<p>Choose 2 from 3 → 3C2 = 3 ways</p>
+
+<p><strong>Probability:</strong></p>
+<p>Coin flip → 1/2 chance of heads</p>
+
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
 </div>
 </div>
 
+<!-- ABOUT -->
 <div class="page">
-<h2>About</h2>
-<p>Members and info</p>
+<h2>Project Information</h2>
+
+<p>This project is for Mathematics and Computer 10.</p>
+
+<p><strong>Theme:</strong> ChanceQuest Web & Guidebook Design</p>
+
+<p><strong>Objective:</strong></p>
+<p>
+To create a responsive and professional website explaining math concepts using web design and CSS.
+</p>
+
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 </div>
@@ -192,7 +257,7 @@ pages[i].classList.add("flipped");
 </div>
 
 <footer>
-<p>© 2026 Roundabout Project</p>
+<p>© 2026 ChanceQuest Digital Guidebook</p>
 </footer>
 
 </body>
