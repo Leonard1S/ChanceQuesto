@@ -103,28 +103,27 @@ color:white;
 cursor:pointer;
 }
 
+/* QUIZ */
+.quiz button{
+display:block;
+margin:5px 0;
+background:#eee;
+color:black;
+}
+
+.quiz button.correct{
+background:lightgreen;
+}
+
+.quiz button.wrong{
+background:#ff7b7b;
+}
+
 footer{
 text-align:center;
 padding:10px;
 background:#2c3e50;
 color:white;
-}
-
-/* MOBILE */
-@media (max-width:600px){
-.book{
-height:80vh;
-}
-
-.page{
-padding:15px;
-font-size:14px;
-}
-
-nav button{
-font-size:12px;
-padding:6px 10px;
-}
 }
 </style>
 
@@ -156,6 +155,23 @@ for(let i=0;i<page-1;i++){
 pages[i].classList.add("flipped");
 }
 }
+
+/* QUIZ LOGIC */
+let score = 0;
+
+function answer(btn, correct){
+if(correct){
+btn.classList.add("correct");
+score++;
+}else{
+btn.classList.add("wrong");
+}
+btn.parentElement.querySelectorAll("button").forEach(b => b.disabled = true);
+}
+
+function showScore(){
+document.getElementById("score").innerText = "Your Score: " + score + "/3";
+}
 </script>
 
 </head>
@@ -179,7 +195,6 @@ pages[i].classList.add("flipped");
 <div class="page cover">
 <h1>📘 ChanceQuest Guidebook</h1>
 <p>Permutation • Combination • Probability</p>
-
 <div class="controls">
 <button onclick="next()">Open ➡</button>
 </div>
@@ -188,19 +203,7 @@ pages[i].classList.add("flipped");
 <!-- INTRO -->
 <div class="page">
 <h1>Introduction</h1>
-
-<p>
-Mathematics is not only about numbers and formulas—it is also about understanding patterns, making decisions, and solving real-life problems. This website focuses on three important concepts in mathematics: permutation, combination, and probability. These topics help us determine how things can be arranged, how groups can be formed, and how likely certain outcomes are to happen.
-</p>
-
-<p>
-Permutation deals with situations where the order of objects matters, such as arranging students in seats or organizing items in a specific sequence. Combination, on the other hand, focuses on selecting items where the order does not matter, like choosing members for a group or committee. Probability helps us measure the likelihood of an event occurring, such as predicting the result of a game or chance-based activity.
-</p>
-
-<p>
-In this website, these concepts are explained using clear definitions, step-by-step solutions, and real-life examples. By connecting mathematical ideas to everyday situations, learners can better understand how these topics are useful beyond the classroom. The goal is to make complex ideas easier to understand and more relatable for students.
-</p>
-
+<p>Mathematics is not only about numbers and formulas—it is also about understanding patterns, making decisions, and solving real-life problems...</p>
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
@@ -210,27 +213,16 @@ In this website, these concepts are explained using clear definitions, step-by-s
 <!-- PERMUTATION -->
 <div class="page">
 <h2>Permutation</h2>
-
 <p>Permutation – Arranging Students in Seats</p>
-
 <p>Description:</p>
 <p>A teacher wants to arrange 4 students (A, B, C, D) in 4 seats. The order matters.</p>
-
 <p>Concept Identification:</p>
 <p>Permutation (order matters)</p>
-
 <p>P(n)=n!</p>
-
 <p>Full Solution:</p>
-
 <p>4!=4x3x2x1=24</p>
-
 <p>Final Answer:</p>
 <p>There are 24 different arrangements.</p>
-
-<p><strong>Visual Representation:</strong></p>
-<p>A B C D → ABCD, ABDC, ACBD...</p>
-
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
@@ -240,26 +232,17 @@ In this website, these concepts are explained using clear definitions, step-by-s
 <!-- COMBINATION -->
 <div class="page">
 <h2>Combination</h2>
-
 <p>Combination – Selecting Committee Members</p>
-
 <p>Description:</p>
 <p>Choose 3 members from 5 candidates (E, F, G, H, I). Order does not matter.</p>
-
 <p>Concept Identification:</p>
 <p>Combination</p>
-
 <p>Full Solution:</p>
 <p>nCr =    n!
            ———
           (n-r)!r!</p>
-
 <p>Final Answer:</p>
 <p>There are 10 possible committees.</p>
-
-<p><strong>Visual Representation:</strong></p>
-<p>{E, F, G, H, I} → groups of 3</p>
-
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
@@ -269,38 +252,11 @@ In this website, these concepts are explained using clear definitions, step-by-s
 <!-- PROBABILITY -->
 <div class="page">
 <h2>Probability</h2>
-
 <p>Probability – Rolling a Dice</p>
-
 <p>Description:</p>
-<p>A fair 6-sided die is rolled. What is the probability of getting an even number (2, 4, or 6)?</p>
-
-<p>Concept Identification:</p>
-<p>Probability (chance of an event happening)</p>
-
-<p>P=  Favorable outcomes/total outcomes</p>
-
-<p>Full Solution:</p>
-
-<p>Total outcomes = 6 → (1, 2, 3, 4, 5, 6)</p>
-<p>Favorable outcomes = 3 → (2, 4, 6)</p>
-
-<p>P(even) = 3/6</p>
-
-<p>Simplify:</p>
-
-<p>= 1/2</p>
-
-<p>Convert to decimal:</p>
-
-<p>= 0.5</p>
-
+<p>A fair 6-sided die is rolled...</p>
 <p>Final Answer:</p>
 <p>The probability is 1/2, 0.5, or 50%.</p>
-
-<p><strong>Visual Representation:</strong></p>
-<p>Dice: {1,2,3,4,5,6} → Even: {2,4,6}</p>
-
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
@@ -311,14 +267,24 @@ In this website, these concepts are explained using clear definitions, step-by-s
 <div class="page">
 <h2>Mini Quiz</h2>
 
-<p><strong>1. How many ways can 3 objects be arranged?</strong></p>
-<p>A. 3<br>B. 6<br>C. 9</p>
+<div class="quiz">
+<p>1. How many ways can 3 objects be arranged?</p>
+<button onclick="answer(this,false)">3</button>
+<button onclick="answer(this,true)">6</button>
+<button onclick="answer(this,false)">9</button>
 
-<p><strong>2. Combination is used when:</strong></p>
-<p>A. Order matters<br>B. Order does not matter</p>
+<p>2. Combination is used when:</p>
+<button onclick="answer(this,false)">Order matters</button>
+<button onclick="answer(this,true)">Order does not matter</button>
 
-<p><strong>3. Probability of getting heads:</strong></p>
-<p>A. 1<br>B. 1/2<br>C. 2</p>
+<p>3. Probability of getting heads:</p>
+<button onclick="answer(this,false)">1</button>
+<button onclick="answer(this,true)">1/2</button>
+<button onclick="answer(this,false)">2</button>
+</div>
+
+<button onclick="showScore()">Check Score</button>
+<p id="score"></p>
 
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
@@ -329,13 +295,8 @@ In this website, these concepts are explained using clear definitions, step-by-s
 <!-- ABOUT -->
 <div class="page">
 <h2>About</h2>
-
 <p><strong>Purpose of the Project</strong></p>
-
-<p>
-This project was created to serve as an interactive and educational resource for students who are learning about permutation, combination, and probability...
-</p>
-
+<p>This project was created to serve as an interactive and educational resource...</p>
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 </div>
