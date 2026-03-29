@@ -41,17 +41,21 @@ justify-content:center;
 align-items:center;
 }
 
-/* BOOK CONTAINER */
+/* BOOK CONTAINER (FIXED GAP) */
 .book{
 width:90%;
 max-width:800px;
 height:70vh;
 position:relative;
+overflow:hidden; 
+border-radius:10px;
 }
 
 /* PAGE STYLE */
 .page{
 position:absolute;
+top:0;
+left:0;
 width:100%;
 height:100%;
 background:white;
@@ -70,24 +74,42 @@ margin-top:0;
 color:#2c3e50;
 }
 
-/* COVER PAGE */
+/* COVER WITH IMAGE */
 .cover{
-background:#2c3e50;
+background: url('cover.jpg') center/cover no-repeat;
 color:white;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+position:relative;
 }
 
-/* PAGE FLIP EFFECT */
+/* DARK OVERLAY */
+.cover::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+border-radius:10px;
+}
+
+.cover *{
+position:relative;
+z-index:1;
+}
+
+/* PAGE FLIP */
 .flipped{
 transform:rotateY(-180deg);
 pointer-events:none;
 }
 
-/* PAGE STACK ORDER */
+/* STACK */
 .page:nth-child(1){z-index:7;}
 .page:nth-child(2){z-index:6;}
 .page:nth-child(3){z-index:5;}
@@ -105,7 +127,7 @@ border-top:1px solid #ddd;
 padding-top:10px;
 }
 
-/* BUTTON STYLE */
+/* BUTTON */
 button{
 padding:8px 12px;
 border:none;
@@ -115,7 +137,7 @@ color:white;
 cursor:pointer;
 }
 
-/* QUIZ STYLE */
+/* QUIZ */
 .quiz button{
 display:block;
 margin:5px 0;
@@ -156,7 +178,6 @@ padding:6px 10px;
 
 <script>
 
-/* PAGE CONTROL */
 let current = 1;
 const total = 7;
 let score = 0;
@@ -186,7 +207,6 @@ pages[i].classList.add("flipped");
 }
 }
 
-/* QUIZ FUNCTION */
 function answer(btn, correct){
 if(correct){
 btn.classList.add("correct");
@@ -209,7 +229,6 @@ document.getElementById("score").innerText = "Your Score: " + score + "/3";
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
 <button onclick="go(1)">Cover</button>
 <button onclick="go(2)">Intro</button>
