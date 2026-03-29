@@ -125,11 +125,29 @@ padding:10px;
 background:#2c3e50;
 color:white;
 }
+
+/* MOBILE */
+@media (max-width:600px){
+.book{
+height:80vh;
+}
+
+.page{
+padding:15px;
+font-size:14px;
+}
+
+nav button{
+font-size:12px;
+padding:6px 10px;
+}
+}
 </style>
 
 <script>
 let current = 1;
 const total = 7;
+let score = 0;
 
 function next(){
 if(current < total){
@@ -156,9 +174,7 @@ pages[i].classList.add("flipped");
 }
 }
 
-/* QUIZ LOGIC */
-let score = 0;
-
+/* FIXED QUIZ FUNCTION */
 function answer(btn, correct){
 if(correct){
 btn.classList.add("correct");
@@ -166,7 +182,10 @@ score++;
 }else{
 btn.classList.add("wrong");
 }
-btn.parentElement.querySelectorAll("button").forEach(b => b.disabled = true);
+
+/* ONLY disable buttons in that question */
+let question = btn.parentElement;
+question.querySelectorAll("button").forEach(b => b.disabled = true);
 }
 
 function showScore(){
@@ -254,7 +273,18 @@ document.getElementById("score").innerText = "Your Score: " + score + "/3";
 <h2>Probability</h2>
 <p>Probability – Rolling a Dice</p>
 <p>Description:</p>
-<p>A fair 6-sided die is rolled...</p>
+<p>A fair 6-sided die is rolled. What is the probability of getting an even number (2, 4, or 6)?</p>
+<p>Concept Identification:</p>
+<p>Probability (chance of an event happening)</p>
+<p>P=  Favorable outcomes/total outcomes</p>
+<p>Full Solution:</p>
+<p>Total outcomes = 6 → (1, 2, 3, 4, 5, 6)</p>
+<p>Favorable outcomes = 3 → (2, 4, 6)</p>
+<p>P(even) = 3/6</p>
+<p>Simplify:</p>
+<p>= 1/2</p>
+<p>Convert to decimal:</p>
+<p>= 0.5</p>
 <p>Final Answer:</p>
 <p>The probability is 1/2, 0.5, or 50%.</p>
 <div class="controls">
@@ -268,19 +298,27 @@ document.getElementById("score").innerText = "Your Score: " + score + "/3";
 <h2>Mini Quiz</h2>
 
 <div class="quiz">
+
+<div class="question">
 <p>1. How many ways can 3 objects be arranged?</p>
 <button onclick="answer(this,false)">3</button>
 <button onclick="answer(this,true)">6</button>
 <button onclick="answer(this,false)">9</button>
+</div>
 
+<div class="question">
 <p>2. Combination is used when:</p>
 <button onclick="answer(this,false)">Order matters</button>
 <button onclick="answer(this,true)">Order does not matter</button>
+</div>
 
+<div class="question">
 <p>3. Probability of getting heads:</p>
 <button onclick="answer(this,false)">1</button>
 <button onclick="answer(this,true)">1/2</button>
 <button onclick="answer(this,false)">2</button>
+</div>
+
 </div>
 
 <button onclick="showScore()">Check Score</button>
