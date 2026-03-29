@@ -5,16 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
+/* BODY */
 body{
 margin:0;
 font-family:'Segoe UI', Arial, sans-serif;
-background:#cfd9df;
+background: url('background.jpg') no-repeat center center fixed;
+background-size: cover;
 display:flex;
 flex-direction:column;
 min-height:100vh;
 line-height:1.6;
 }
 
+/* NAVIGATION */
 nav{
 text-align:center;
 padding:10px;
@@ -29,6 +33,7 @@ color:white;
 cursor:pointer;
 }
 
+/* MAIN LAYOUT */
 .main{
 flex:1;
 display:flex;
@@ -36,6 +41,7 @@ justify-content:center;
 align-items:center;
 }
 
+/* BOOK CONTAINER */
 .book{
 width:90%;
 max-width:800px;
@@ -43,6 +49,7 @@ height:70vh;
 position:relative;
 }
 
+/* PAGE STYLE */
 .page{
 position:absolute;
 width:100%;
@@ -57,11 +64,13 @@ transform-origin:left;
 overflow:auto;
 }
 
+/* HEADINGS */
 .page h2{
 margin-top:0;
 color:#2c3e50;
 }
 
+/* COVER PAGE */
 .cover{
 background:#2c3e50;
 color:white;
@@ -72,12 +81,13 @@ align-items:center;
 text-align:center;
 }
 
+/* PAGE FLIP EFFECT */
 .flipped{
 transform:rotateY(-180deg);
 pointer-events:none;
 }
 
-/* STACK */
+/* PAGE STACK ORDER */
 .page:nth-child(1){z-index:7;}
 .page:nth-child(2){z-index:6;}
 .page:nth-child(3){z-index:5;}
@@ -86,6 +96,7 @@ pointer-events:none;
 .page:nth-child(6){z-index:2;}
 .page:nth-child(7){z-index:1;}
 
+/* BUTTON AREA */
 .controls{
 margin-top:20px;
 display:flex;
@@ -94,6 +105,7 @@ border-top:1px solid #ddd;
 padding-top:10px;
 }
 
+/* BUTTON STYLE */
 button{
 padding:8px 12px;
 border:none;
@@ -103,22 +115,21 @@ color:white;
 cursor:pointer;
 }
 
-/* QUIZ */
+/* QUIZ STYLE */
 .quiz button{
 display:block;
 margin:5px 0;
 background:#eee;
 color:black;
 }
-
 .quiz button.correct{
 background:lightgreen;
 }
-
 .quiz button.wrong{
 background:#ff7b7b;
 }
 
+/* FOOTER */
 footer{
 text-align:center;
 padding:10px;
@@ -126,25 +137,26 @@ background:#2c3e50;
 color:white;
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 @media (max-width:600px){
 .book{
 height:80vh;
 }
-
 .page{
 padding:15px;
 font-size:14px;
 }
-
 nav button{
 font-size:12px;
 padding:6px 10px;
 }
 }
+
 </style>
 
 <script>
+
+/* PAGE CONTROL */
 let current = 1;
 const total = 7;
 let score = 0;
@@ -174,6 +186,7 @@ pages[i].classList.add("flipped");
 }
 }
 
+/* QUIZ FUNCTION */
 function answer(btn, correct){
 if(correct){
 btn.classList.add("correct");
@@ -189,12 +202,14 @@ question.querySelectorAll("button").forEach(b => b.disabled = true);
 function showScore(){
 document.getElementById("score").innerText = "Your Score: " + score + "/3";
 }
+
 </script>
 
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
 <nav>
 <button onclick="go(1)">Cover</button>
 <button onclick="go(2)">Intro</button>
@@ -217,7 +232,7 @@ document.getElementById("score").innerText = "Your Score: " + score + "/3";
 </div>
 </div>
 
-<!-- INTRO (FIXED) -->
+<!-- INTRO -->
 <div class="page">
 <h1>Introduction</h1>
 
@@ -343,7 +358,7 @@ In this website, these concepts are explained using clear definitions, step-by-s
 </div>
 </div>
 
-<!-- ABOUT (FIXED) -->
+<!-- ABOUT -->
 <div class="page">
 <h2>About</h2>
 
