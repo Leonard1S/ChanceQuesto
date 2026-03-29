@@ -53,6 +53,7 @@ height:100%;
 background:white;
 border-radius:10px;
 padding:20px;
+padding-bottom:60px; /* 🔥 prevents overlap */
 box-sizing:border-box;
 transition:transform 0.6s;
 transform-origin:left;
@@ -83,13 +84,13 @@ pointer-events:none;
 .page:nth-child(4){z-index:2;}
 .page:nth-child(5){z-index:1;}
 
-/* BUTTONS */
+/* BUTTONS (FIXED) */
 .controls{
-position:absolute;
-bottom:10px;
-width:90%;
+margin-top:20px;
 display:flex;
 justify-content:space-between;
+border-top:1px solid #ddd;
+padding-top:10px;
 }
 
 button{
