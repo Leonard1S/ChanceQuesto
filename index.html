@@ -14,7 +14,6 @@ flex-direction:column;
 min-height:100vh;
 }
 
-/* NAV */
 nav{
 text-align:center;
 padding:10px;
@@ -29,7 +28,6 @@ color:white;
 cursor:pointer;
 }
 
-/* MAIN */
 .main{
 flex:1;
 display:flex;
@@ -37,7 +35,6 @@ justify-content:center;
 align-items:center;
 }
 
-/* BOOK */
 .book{
 width:90%;
 max-width:800px;
@@ -45,7 +42,6 @@ height:70vh;
 position:relative;
 }
 
-/* PAGE */
 .page{
 position:absolute;
 width:100%;
@@ -53,14 +49,13 @@ height:100%;
 background:white;
 border-radius:10px;
 padding:20px;
-padding-bottom:60px; /* 🔥 prevents overlap */
+padding-bottom:60px;
 box-sizing:border-box;
 transition:transform 0.6s;
 transform-origin:left;
 overflow:auto;
 }
 
-/* COVER */
 .cover{
 background:#2c3e50;
 color:white;
@@ -71,20 +66,19 @@ align-items:center;
 text-align:center;
 }
 
-/* FLIP */
 .flipped{
 transform:rotateY(-180deg);
 pointer-events:none;
 }
 
-/* STACK */
-.page:nth-child(1){z-index:5;}
-.page:nth-child(2){z-index:4;}
-.page:nth-child(3){z-index:3;}
-.page:nth-child(4){z-index:2;}
-.page:nth-child(5){z-index:1;}
+.page:nth-child(1){z-index:7;}
+.page:nth-child(2){z-index:6;}
+.page:nth-child(3){z-index:5;}
+.page:nth-child(4){z-index:4;}
+.page:nth-child(5){z-index:3;}
+.page:nth-child(6){z-index:2;}
+.page:nth-child(7){z-index:1;}
 
-/* BUTTONS (FIXED) */
 .controls{
 margin-top:20px;
 display:flex;
@@ -102,7 +96,6 @@ color:white;
 cursor:pointer;
 }
 
-/* FOOTER */
 footer{
 text-align:center;
 padding:10px;
@@ -113,7 +106,7 @@ color:white;
 
 <script>
 let current = 1;
-const total = 5;
+const total = 7;
 
 function next(){
 if(current < total){
@@ -145,13 +138,14 @@ pages[i].classList.add("flipped");
 
 <body>
 
-<!-- NAV -->
 <nav>
 <button onclick="go(1)">Cover</button>
-<button onclick="go(2)">Home</button>
-<button onclick="go(3)">Content</button>
-<button onclick="go(4)">Examples</button>
-<button onclick="go(5)">About</button>
+<button onclick="go(2)">Intro</button>
+<button onclick="go(3)">Permutation</button>
+<button onclick="go(4)">Combination</button>
+<button onclick="go(5)">Probability</button>
+<button onclick="go(6)">Solutions</button>
+<button onclick="go(7)">About</button>
 </nav>
 
 <div class="main">
@@ -167,17 +161,12 @@ pages[i].classList.add("flipped");
 </div>
 </div>
 
-<!-- HOME -->
+<!-- INTRO -->
 <div class="page">
 <h1>Introduction</h1>
 
 <p>
-This website is part of the ChanceQuest Digital Guidebook project. 
-It helps Grade 10 students understand permutation, combination, and probability.
-</p>
-
-<p>
-The goal is to provide a clear and engaging learning experience using real-life examples and simple explanations.
+This website helps students understand permutation, combination, and probability through clear explanations and examples.
 </p>
 
 <div class="controls">
@@ -186,49 +175,92 @@ The goal is to provide a clear and engaging learning experience using real-life 
 </div>
 </div>
 
-<!-- CONTENT -->
+<!-- PERMUTATION -->
 <div class="page">
-<h2>Educational Content</h2>
+<h2>Permutation</h2>
 
-<p><strong>Definitions:</strong></p>
-<ul>
-<li>Permutation – arrangement where order matters</li>
-<li>Combination – selection where order does not matter</li>
-<li>Probability – chance of an event occurring</li>
-</ul>
+<p><strong>Definition:</strong></p>
+<p>Permutation is the arrangement of objects where order matters.</p>
 
-<p><strong>Key Terms:</strong></p>
-<ul>
-<li>Factorial (n!)</li>
-<li>Sample Space</li>
-<li>Event</li>
-<li>Favorable Outcomes</li>
-<li>Experimental vs Theoretical Probability</li>
-</ul>
+<p><strong>Formula:</strong></p>
+<p>P(n) = n!</p>
 
-<p><strong>Formulas:</strong></p>
-<p>nPr = n! / (n - r)!</p>
-<p>nCr = n! / [r!(n - r)!]</p>
+<h3>Example:</h3>
+<p><strong>Description:</strong></p>
+<p>A teacher wants to arrange 4 students (A, B, C, D) in 4 seats.</p>
+
+<p><strong>Concept:</strong> Permutation (order matters)</p>
+
+<p><strong>Solution:</strong></p>
+<p>4! = 4 × 3 × 2 × 1 = 24</p>
+
+<p><strong>Final Answer:</strong> 24 arrangements</p>
+
+<div class="controls">
+<button onclick="prev()">⬅ Back</button>
+<button onclick="next()">Next ➡</button>
+</div>
+</div>
+
+<!-- COMBINATION -->
+<div class="page">
+<h2>Combination</h2>
+
+<p><strong>Definition:</strong></p>
+<p>Combination is the selection of objects where order does not matter.</p>
+
+<p><strong>Formula:</strong></p>
+<p>nCr = n! / [(n - r)! r!]</p>
+
+<h3>Example:</h3>
+<p><strong>Description:</strong></p>
+<p>Choose 3 members from 5 candidates (E, F, G, H, I).</p>
+
+<p><strong>Concept:</strong> Combination</p>
+
+<p><strong>Final Answer:</strong> 10 possible committees</p>
+
+<div class="controls">
+<button onclick="prev()">⬅ Back</button>
+<button onclick="next()">Next ➡</button>
+</div>
+</div>
+
+<!-- PROBABILITY -->
+<div class="page">
+<h2>Probability</h2>
+
+<p><strong>Definition:</strong></p>
+<p>Probability is the chance that an event will occur.</p>
+
+<p><strong>Formula:</strong></p>
 <p>P(E) = favorable outcomes / total outcomes</p>
 
+<h3>Example:</h3>
+<p><strong>Description:</strong></p>
+<p>A 6-sided die is rolled. Find probability of even number.</p>
+
+<p><strong>Solution:</strong></p>
+<p>Total outcomes = 6</p>
+<p>Favorable outcomes = 3 (2, 4, 6)</p>
+
+<p>P = 3/6 = 1/2 = 0.5</p>
+
+<p><strong>Final Answer:</strong> 1/2 (50%)</p>
+
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
 </div>
 </div>
 
-<!-- EXAMPLES -->
+<!-- SOLUTIONS -->
 <div class="page">
-<h2>Examples</h2>
+<h2>Step-by-Step Summary</h2>
 
-<p><strong>Permutation:</strong></p>
-<p>Arrange 3 students → 3! = 6 ways</p>
-
-<p><strong>Combination:</strong></p>
-<p>Choose 2 from 3 → 3C2 = 3 ways</p>
-
-<p><strong>Probability:</strong></p>
-<p>Coin flip → 1/2 chance of heads</p>
+<p><strong>Permutation:</strong> 4! = 24</p>
+<p><strong>Combination:</strong> 10 ways</p>
+<p><strong>Probability:</strong> 1/2 or 50%</p>
 
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
@@ -238,16 +270,9 @@ The goal is to provide a clear and engaging learning experience using real-life 
 
 <!-- ABOUT -->
 <div class="page">
-<h2>Project Information</h2>
+<h2>About</h2>
 
-<p>This project is for Mathematics and Computer 10.</p>
-
-<p><strong>Theme:</strong> ChanceQuest Web & Guidebook Design</p>
-
-<p><strong>Objective:</strong></p>
-<p>
-To create a responsive and professional website explaining math concepts using web design and CSS.
-</p>
+<p>This project is created for Mathematics and Computer 10.</p>
 
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
