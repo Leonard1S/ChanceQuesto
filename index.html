@@ -41,13 +41,13 @@ justify-content:center;
 align-items:center;
 }
 
-/* BOOK CONTAINER (FIXED GAP) */
+/* BOOK CONTAINER */
 .book{
 width:90%;
 max-width:800px;
 height:70vh;
 position:relative;
-overflow:hidden; 
+overflow:hidden;
 border-radius:10px;
 }
 
@@ -74,7 +74,7 @@ margin-top:0;
 color:#2c3e50;
 }
 
-/* COVER WITH IMAGE */
+/* COVER */
 .cover{
 background: url('cover.jpg') center/cover no-repeat;
 color:white;
@@ -86,7 +86,6 @@ text-align:center;
 position:relative;
 }
 
-/* DARK OVERLAY */
 .cover::before{
 content:"";
 position:absolute;
@@ -109,16 +108,17 @@ transform:rotateY(-180deg);
 pointer-events:none;
 }
 
-/* STACK */
-.page:nth-child(1){z-index:7;}
-.page:nth-child(2){z-index:6;}
-.page:nth-child(3){z-index:5;}
-.page:nth-child(4){z-index:4;}
-.page:nth-child(5){z-index:3;}
-.page:nth-child(6){z-index:2;}
-.page:nth-child(7){z-index:1;}
+/* STACK (UPDATED FOR 8 PAGES) */
+.page:nth-child(1){z-index:8;}
+.page:nth-child(2){z-index:7;}
+.page:nth-child(3){z-index:6;}
+.page:nth-child(4){z-index:5;}
+.page:nth-child(5){z-index:4;}
+.page:nth-child(6){z-index:3;}
+.page:nth-child(7){z-index:2;}
+.page:nth-child(8){z-index:1;}
 
-/* BUTTON AREA */
+/* CONTROLS */
 .controls{
 margin-top:20px;
 display:flex;
@@ -127,7 +127,6 @@ border-top:1px solid #ddd;
 padding-top:10px;
 }
 
-/* BUTTON */
 button{
 padding:8px 12px;
 border:none;
@@ -159,7 +158,6 @@ background:#2c3e50;
 color:white;
 }
 
-/* RESPONSIVE */
 @media (max-width:600px){
 .book{
 height:80vh;
@@ -179,7 +177,7 @@ padding:6px 10px;
 <script>
 
 let current = 1;
-const total = 7;
+const total = 8;
 let score = 0;
 
 function next(){
@@ -237,6 +235,7 @@ document.getElementById("score").innerText = "Your Score: " + score + "/3";
 <button onclick="go(5)">Probability</button>
 <button onclick="go(6)">Quiz</button>
 <button onclick="go(7)">About</button>
+<button onclick="go(8)">Members</button>
 </nav>
 
 <div class="main">
@@ -260,29 +259,13 @@ Mathematics is not only about numbers and formulas—it is also about understand
 </p>
 
 <p>
-In the realm of mathematics, particularly in probability and statistics, several key concepts help us understand and analyze uncertain events.
+Permutation deals with situations where the order of objects matters, such as arranging students in seats or organizing items in a specific sequence. Combination, on the other hand, focuses on selecting items where the order does not matter, like choosing members for a group or committee. Probability helps us measure the likelihood of an event occurring, such as predicting the result of a game or chance-based activity.
 </p>
 
 <p>
-Combination and permutation are two fundamental counting techniques. A combination is a way to select items from a larger group where the order of selection doesn't matter. On the other hand, a permutation is an arrangement of items where order is crucial
+In this website, these concepts are explained using clear definitions, step-by-step solutions, and real-life examples. By connecting mathematical ideas to everyday situations, learners can better understand how these topics are useful beyond the classroom. The goal is to make complex ideas easier to understand and more relatable for students.
 </p>
 
-<p>
-Factorial, denoted by an exclamation mark (!), is a mathematical operation that involves multiplying a number by all positive integers below it, playing a vital role in calculating permutations and combinations.
-</p>
-
-<p>
-When analyzing events, the sample space represents all possible outcomes, while an event is a specific outcome or set of outcomes within that space. Favorable outcomes are those that align with the event of interest.
-</p>
-
-<p>
-Probability, a measure of likelihood, comes in two forms: experimental and theoretical. Experimental probability is derived from actual trials or experiments, whereas theoretical probability is calculated based on the number of favorable outcomes divided by the total outcomes in the sample space.
-</p>
-
-<p>
-Understanding these concepts provides a solid foundation for tackling problems in probability, statistics, and beyond.
-</p>
-           
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
 <button onclick="next()">Next ➡</button>
@@ -414,6 +397,24 @@ Another goal of this website is to improve students’ problem-solving and criti
 <p>
 Overall, this website was created to make mathematics more accessible, practical, and enjoyable. It demonstrates that math is not just a subject in school, but a useful tool that can be applied in real-life situations such as planning, organizing, and decision-making. Through this project, students are given the opportunity to see the relevance of mathematics and appreciate its importance in everyday life.
 </p>
+
+<div class="controls">
+<button onclick="prev()">⬅ Back</button>
+</div>
+</div>
+
+<!-- MEMBERS PAGE (NEW) -->
+<div class="page">
+<h2>Project Members</h2>
+
+<p>Edit this section with your group members:</p>
+
+<ul>
+<li>Your Name – Role</li>
+<li>Member 2 – Role</li>
+<li>Member 3 – Role</li>
+<li>Member 4 – Role</li>
+</ul>
 
 <div class="controls">
 <button onclick="prev()">⬅ Back</button>
